@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   
   def show
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
   
   def update
-    @user = current_user #16章
+    @user = current_user
     @user.update(user_params)
     redirect_to user_path(@user.id)
   end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
-      redirect_to post_images_path
+    redirect_to post_images_path
     end
   end
 end
